@@ -1,0 +1,14 @@
+export const REGISTER_SUCCESS = 'REGISTER_SUCCESS';
+export const REGISTER_FAIL = 'REGISTER_FAIL';
+export const USER_LOADED = 'USER_LOADED';
+export const AUTH_ERROR = 'AUTH_ERROR';
+export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
+export const LOGIN_FAIL = 'LOGIN_FAIL';
+export const LOGOUT = 'LOGOUT';
+export const CLEAR_ERRORS = 'CLEAR_ERRORS';
+export const GET_GRIEVANCES = 'GET_GRIEVANCES';
+export const ADD_GRIEVANCE = 'ADD_GRIEVANCE';
+export const GRIEVANCE_ERROR = 'GRIEVANCE_ERROR';
+export const GET_GRIEVANCE = 'GET_GRIEVANCE';
+export const ADD_COMMENT = 'ADD_COMMENT';
+export const COMMENT_ERROR = 'COMMENT_ERROR';
