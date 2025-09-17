@@ -5,6 +5,7 @@ import {
   GET_GRIEVANCE,
   ADD_COMMENT,
   COMMENT_ERROR,
+  UPDATE_GRIEVANCE,
 } from '../types';
 
 export default (state, action) => {
@@ -34,6 +35,14 @@ export default (state, action) => {
         comments: [...state.comments, action.payload],
         loading: false,
       };
+      case UPDATE_GRIEVANCE:
+        return {
+          ...state,
+          grievances: state.grievances.map((grievance) =>
+            grievance._id === action.payload._id ? action.payload : grievance
+          ),
+          loading: false,
+        };
     case GRIEVANCE_ERROR:
     case COMMENT_ERROR:
       return {

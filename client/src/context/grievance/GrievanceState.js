@@ -100,6 +100,19 @@ const GrievanceState = (props) => {
     }
   };
 
+  // Repost Grievance
+  const repostGrievance = async (id) => {
+    try {
+      const res = await axios.put(`/api/grievances/repost/${id}`);
+      dispatch({ type: 'UPDATE_GRIEVANCE', payload: res.data }); // We need an UPDATE_GRIEVANCE type
+    } catch (err) {
+      dispatch({
+        type: GRIEVANCE_ERROR,
+        payload: err.response.data.msg,
+      });
+    }
+  };
+
   return (
     <grievanceContext.Provider
       value={{
@@ -114,6 +127,7 @@ const GrievanceState = (props) => {
         addGrievance,
         getGrievance,
         addComment,
+        repostGrievance,
       }}
     >
       {props.children}

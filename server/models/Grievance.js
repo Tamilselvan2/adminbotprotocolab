@@ -40,6 +40,10 @@ const GrievanceSchema = new mongoose.Schema({
     type: Number,
     default: 0,
   },
+  warnings: {
+    type: Number,
+    default: 0,
+  },
   lastRepostedAt: {
     type: Date,
   },

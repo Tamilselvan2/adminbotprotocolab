@@ -93,27 +93,40 @@ exports.repostGrievance = async (req, res) => {
 
     // Logic to check if reposting is allowed
     const now = new Date();
-    const createdAt = new Date(grievance.createdAt);
-    const hoursSinceCreation = (now - createdAt) / (1000 * 60 * 60);
+    let canRepost = false;
 
-    if (grievance.status === 'open' && hoursSinceCreation < 24) {
-      return res.status(400).json({ msg: 'Cannot repost within 24 hours of creation if no response' });
+    if (grievance.status === 'open') {
+      const createdAt = new Date(grievance.createdAt);
+      const hoursSinceCreation = (now - createdAt) / (1000 * 60 * 60);
+      if (hoursSinceCreation >= 24) {
+        canRepost = true;
+      }
     }
 
-    if (grievance.deadline) {
+    if (grievance.status === 'in-progress' && grievance.deadline) {
       const deadline = new Date(grievance.deadline);
-      if (now < deadline) {
-        return res.status(400).json({ msg: 'Cannot repost before the deadline has passed' });
+      if (now > deadline) {
+        canRepost = true;
       }
+    }
+
+    if (!canRepost) {
+      return res.status(400).json({ msg: 'This grievance is not eligible for reposting at this time.' });
     }
 
     grievance.reposts += 1;
     grievance.lastRepostedAt = now;
 
-    // Potentially escalate here or in a separate service
-    if (grievance.reposts > 2) {
-      grievance.status = 'escalated';
-      // Find higher authority and assign
+    if (grievance.reposts >= 2) {
+        console.log(`Grievance ${grievance._id} has been reposted ${grievance.reposts} times. Escalating.`);
+        grievance.status = 'escalated';
+        const currentAuthority = await Authority.findById(grievance.authority);
+        if (currentAuthority && currentAuthority.higherAuthority) {
+            grievance.authority = currentAuthority.higherAuthority;
+            grievance.warnings = 0;
+            grievance.reposts = 0;
+            grievance.status = 'open';
+        }
     }
 
     await grievance.save();

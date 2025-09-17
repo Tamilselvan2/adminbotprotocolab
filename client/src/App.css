@@ -138,6 +138,18 @@ ul {
   background: #fff; /* white */
 }
 
+.btn-danger {
+    background: #555;
+    color: #fff;
+}
+
+.card {
+    background: #fff;
+    padding: 1rem;
+    border: #ccc 1px dotted;
+    margin: 0.7rem 0;
+}
+
 /* Grievance Item */
 .post {
   display: grid;

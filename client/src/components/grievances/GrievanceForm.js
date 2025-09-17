@@ -1,15 +1,23 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import GrievanceContext from '../../context/grievance/grievanceContext';
+import AuthorityContext from '../../context/authority/authorityContext';
 
 const GrievanceForm = () => {
   const grievanceContext = useContext(GrievanceContext);
+  const authorityContext = useContext(AuthorityContext);
   const { addGrievance } = grievanceContext;
+  const { authorities, getAuthorities } = authorityContext;
+
+  useEffect(() => {
+    getAuthorities();
+    // eslint-disable-next-line
+  }, []);
 
   const [grievance, setGrievance] = useState({
     title: '',
     description: '',
     location: '',
-    authorityId: '', // Will be a dropdown
+    authorityId: '',
   });
 
   const { title, description, location, authorityId } = grievance;
@@ -53,16 +61,19 @@ const GrievanceForm = () => {
           onChange={onChange}
         />
         {/* TODO: Replace with a dropdown of authorities */}
-        <input
-          type='text'
-          placeholder='Authority ID'
-          name='authorityId'
-          value={authorityId}
-          onChange={onChange}
-        />
+        <select name="authorityId" value={authorityId} onChange={onChange}>
+          <option value="" disabled>
+            Select an Authority
+          </option>
+          {authorities.map((authority) => (
+            <option key={authority._id} value={authority._id}>
+              {authority.name}
+            </option>
+          ))}
+        </select>
         <div>
           <input
-            type='submit'
+            type="submit"
             value='Submit Grievance'
             className='btn btn-primary btn-block'
           />
