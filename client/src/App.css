@@ -9,13 +9,13 @@ body {
   font-family: 'Roboto', sans-serif;
   font-size: 1rem;
   line-height: 1.6;
-  background-color: #f4f4f4;
-  color: #333;
+  background-color: #f4f4f4; /* very light grey */
+  color: #333; /* dark grey */
 }
 
 a {
   text-decoration: none;
-  color: #333;
+  color: #333; /* dark grey */
 }
 
 ul {
@@ -50,7 +50,7 @@ ul {
 }
 
 .text-primary {
-  color: #17a2b8;
+  color: #333; /* dark grey */
 }
 
 /* Navbar */
@@ -63,9 +63,9 @@ ul {
   z-index: 1;
   width: 100%;
   top: 0;
-  border-bottom: solid 1px #17a2b8;
+  border-bottom: solid 1px #ccc; /* silver/light grey */
   opacity: 0.9;
-  background: #fff;
+  background: #fff; /* white */
 }
 
 .navbar ul {
@@ -73,13 +73,13 @@ ul {
 }
 
 .navbar a {
-  color: #333;
+  color: #333; /* dark grey */
   padding: 0.45rem;
   margin: 0 0.25rem;
 }
 
 .navbar a:hover {
-  color: #17a2b8;
+  color: #555; /* medium grey */
 }
 
 /* Forms */
@@ -87,7 +87,7 @@ ul {
   max-width: 500px;
   margin: 2rem auto;
   padding: 2rem;
-  background: #fff;
+  background: #fff; /* white */
 }
 
 .form .form-group {
@@ -102,7 +102,7 @@ ul {
   width: 100%;
   padding: 0.4rem;
   font-size: 1.2rem;
-  border: 1px solid #ccc;
+  border: 1px solid #ccc; /* silver/light grey */
 }
 
 .form input[type='submit'] {
@@ -112,11 +112,11 @@ ul {
 /* Buttons */
 .btn {
   display: inline-block;
-  background: #f4f4f4;
-  color: #333;
+  background: #f4f4f4; /* very light grey */
+  color: #333; /* dark grey */
   padding: 0.4rem 1.3rem;
   font-size: 1rem;
-  border: none;
+  border: 1px solid #ccc; /* silver/light grey */
   cursor: pointer;
   margin-right: 0.5rem;
   transition: opacity 0.2s ease-in;
@@ -124,17 +124,18 @@ ul {
 }
 
 .btn-primary {
-  background: #17a2b8;
-  color: #fff;
+  background: #333; /* dark grey */
+  color: #fff; /* white */
 }
 
 .btn-dark {
-  background: #333;
-  color: #fff;
+  background: #000; /* black */
+  color: #fff; /* white */
 }
 
 .btn-light {
-  border: 1px solid #ccc;
+  border: 1px solid #ccc; /* silver/light grey */
+  background: #fff; /* white */
 }
 
 /* Grievance Item */
@@ -144,19 +145,19 @@ ul {
   gap: 2rem;
   align-items: center;
   padding: 1rem;
-  border: 1px solid #ccc;
+  border: 1px solid #ccc; /* silver/light grey */
   margin: 1rem 0;
-  background: #fff;
+  background: #fff; /* white */
 }
 
 /* Comment */
 .comment {
   padding: 1rem;
-  border-bottom: 1px solid #ccc;
+  border-bottom: 1px solid #eee; /* very light grey */
 }
 
 .bg-white {
-  background: #fff;
+  background: #fff; /* white */
 }
 .p-1 {
   padding: 1rem;
@@ -166,13 +167,13 @@ ul {
 }
 
 .post-date {
-    color: #888;
+    color: #888; /* medium grey */
     font-size: 0.8rem;
 }
 
 .spinner {
-  border: 5px solid #f3f3f3;
-  border-top: 5px solid #17a2b8;
+  border: 5px solid #f3f3f3; /* very light grey */
+  border-top: 5px solid #555; /* medium grey */
   border-radius: 50%;
   width: 50px;
   height: 50px;
